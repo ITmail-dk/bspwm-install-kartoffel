@@ -1,0 +1,256 @@
+#
+# SXHKD Hotkey's config.
+#
+# Reload SXHKD Config.
+
+super + shift + ctrl + alt + Escape
+	pkill -USR1 -x sxhkd
+
+###################################
+
+# Terminal´s primary and secondary.
+super + Return
+	kitty
+
+super + shift + Return
+	alacritty
+
+
+# Rofi launcher - Start # # # # # # # # # # # # # # # # # #
+super + r
+	rofi -modi "run,window,filebrowser,ssh" -show run
+
+super + space
+	rofi -modi "run,window,filebrowser,ssh" -show run
+
+alt + Tab
+	rofi -modi "window,run" -show window
+
+super + ctrl + m
+	. ~/.config/rofi/rofi-beats.sh
+
+super + alt + w
+	. ~/.config/rofi/rofi-wifi-menu.sh
+
+# Rofi launcher - End # # # # # # # # # # # # # # # # # # #
+
+super + b
+	google-chrome
+
+super + shift + b
+	firefox
+
+
+# File Manager
+super + e
+	thunar
+
+super + shift + e
+	pcmanfm
+
+# Steam (flatpak run)
+#super + ctrl + s
+#	steam
+
+# SteamLink  (flatpak run)
+super + ctrl + s
+    kitty -e flatpak run com.valvesoftware.SteamLink
+
+# Network
+super + alt + n
+	kitty -e sudo nmtui
+
+# Audio / Music
+
+super + alt + a
+    kitty -e pulsemixer
+
+super + alt + m
+    pulsemixer --toggle-mute
+
+super + alt + Up
+    pulsemixer --change-volume +1
+
+super + alt + Down
+    pulsemixer --change-volume -1
+
+XF86AudioRaiseVolume
+    pulsemixer --change-volume +1
+
+XF86AudioLowerVolume
+    pulsemixer --change-volume -1
+
+XF86AudioMute
+    pulsemixer --toggle-mute
+
+# Edit Config files in Code
+super + ctrl + alt + c
+	code -r ~/.config
+
+# Edit WebWork files in Code
+super + ctrl + alt + w
+	code -r ~/nas/WebWork
+
+
+# GVNCviewer TEST
+super + ctrl + alt + shift + g
+    gvncviewer IP:PORT
+
+# GVNCviewer
+super + ctrl + g
+    gvncviewer IP:PORT
+
+# GVNCviewer Remote Desktop Work
+super + ctrl + w
+	gvncviewer IP:PORT
+
+# NX Witness client
+super + ctrl + o
+    /opt/networkoptix/client/4.2.0.32840/bin/client-bin
+
+
+# Remote Desktop Protocol (RDP)
+super + ctrl + r
+    bash -ic 'rdp'
+
+# Remote Desktop Protocol (RDP)
+
+    bash -ic 'rdpwork'
+
+# Flameshot (Screenshot Software)
+super + ctrl + alt + s
+	flameshot gui -p ~/Screenshots
+
+@Print
+	flameshot gui -p ~/Screenshots
+
+# Lock computer
+super + l
+	xsecurelock
+
+# Settings-manager
+super + i
+	xfce4-settings-manager
+#
+#
+#
+#  888888b.    .d8888b.  8888888b.                                   888    888          888    888                                 
+#  888  "88b  d88P  Y88b 888   Y88b                                  888    888          888    888                                 
+#  888  .88P  Y88b.      888    888                                  888    888          888    888                                 
+#  8888888K.   "Y888b.   888   d88P 888  888  888 88888b.d88b.       8888888888  .d88b.  888888 888  888  .d88b.  888  888 .d8888b  
+#  888  "Y88b     "Y88b. 8888888P"  888  888  888 888 "888 "88b      888    888 d88""88b 888    888 .88P d8P  Y8b 888  888 88K      
+#  888    888       "888 888        888  888  888 888  888  888      888    888 888  888 888    888888K  88888888 888  888 "Y8888b. 
+#  888   d88P Y88b  d88P 888        Y88b 888 d88P 888  888  888      888    888 Y88..88P Y88b.  888 "88b Y8b.     Y88b 888      X88 
+#  8888888P"   "Y8888P"  888         "Y8888888P"  888  888  888      888    888  "Y88P"   "Y888 888  888  "Y8888   "Y88888  88888P' 
+#                                                                                                                      888          
+#                                                                                                                 Y8b d88P          
+#                                                                                                                  "Y88P"           
+
+
+# quit/restart bspwm
+super + ctrl + alt + shift + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+#
+# State / Flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# Focus / Swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+#super + {_,shift + }{1-9,0}
+#	bspc {desktop -f,node -d} '^{1-9,10}'
+
+super + {1-9,0}
+        bspc desktop -f {1-9,10}
+
+super + shift + {1-9,0}
+        bspc node -d {1-9,10} -f
+
+#
+# Preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# Move / Resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-10 0,0 10,0 -10,10 0}

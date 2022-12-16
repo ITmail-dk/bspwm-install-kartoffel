@@ -1,0 +1,111 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+#bspc monitor (-d or NAME) also the number that should be on that screen.
+#example of reverse order on screens.
+#bspc monitor Screen-1 -s Screen-2
+# xrandr --listmonitors or xrandr -q | grep connected
+
+# set the screen resolution and you can find your maximum resolution with this Command.
+# Run xrandr in the terminal to see list.
+#xrandr -s 1920x1080 &
+#xrandr --output DP-1 --mode 3440x1440 -r 144
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+
+# Monitor Setup / Multi monitor and desktops 
+#bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+# Desktops / Workspaces 1-9 + 0 = Desktop 10
+
+#bspc monitor DP-2 -d 1 2 3 4 5 6 7
+
+#bspc monitor DP-1 -d 8
+#bspc monitor DP-7 -d 8 9
+
+# Top padding monitors so there is room for Polybar.
+#bspc config -m DP-1 top_padding 0
+#bspc config -m DP-2 top_padding 28
+#bspc config -m DP-7 top_padding 0
+
+# Startup
+xsetroot -cursor_name left_ptr &
+
+#pkill picom &
+#sleep 1 &
+#picom -b --vsync --experimental-backends &
+
+# BSPwm - Setting.
+bspc config border_width 1
+bspc config normal_border_color 	"#0A1B2A"
+bspc config active_border_color 	"#313745"
+bspc config focused_border_color 	"#FF0A1B2A"
+bspc config presel_feedback_color   "#7ea0bd"
+
+bspc config window_gap 7
+
+bspc config split_ratio     0.50
+# top_padding so there is room for Polybar.
+bspc config top_padding     28
+bspc config bottom_padding  0
+bspc config left_padding    0
+bspc config right_padding   0
+
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+bspc config single_monocle      true
+
+bspc config remove_unplugged_monitors   true
+bspc config remove_disabled_monitors    true
+
+bspc config focus_follows_pointer true
+bspc config pointer_follows_monitor true
+bspc config click_to_focus false
+
+bspc config pointer_modifier mod1
+bspc config pointer_action1     resize_side
+bspc config pointer_action3     move
+#bspc config pointer_action2     resize_corner
+
+
+# Rule Commands - General Syntax.
+# bspc rule -a, --add (<class_name>|*)[:(<instance_name>|\*)[:(<name>|*)]] 
+# [*-o*|--one-shot] [monitor=MONITOR_SEL|desktop=DESKTOP_SEL|node=NODE_SEL] 
+# [state=STATE] [layer=LAYER] [split_dir=DIR] [split_ratio=RATIO] 
+# [(hidden|sticky|private|locked|marked|center|follow|manage|focus|border)=(on|off)] 
+# [rectangle=WxH+X+Y]
+
+# To Fine <class_name> Use xprop on terminal.
+
+# Example # bspc rule -a Google-chrome desktop='^2' follow=on border=off
+
+bspc rule -a Nitrogen state=floating follow=on center=true rectangle=1050x700+0+0
+bspc rule -a Screenkey manage=off
+bspc rule -a xfreerdp state=floating center=true
+bspc rule -a Gvncviewer state=floating center=true
+
+bspc rule -a Google-chrome border=off
+bspc rule -a Mozilla Firefox border=off
+bspc rule -a Code desktop=3 follow=on  border=off
+bspc rule -a TeamViewer desktop=5 state=floating center=true follow=on border=off
+bspc rule -a Steam desktop=6 follow=on border=off
+bspc rule -a Gimp desktop=7 follow=on layer=above border=off
+bspc rule -a Inkscape desktop=7 follow=on border=off
+bspc rule -a LibreCAD desktop=7 follow=on border=off
+bspc rule -a mpv state=fullscreen border=off
+
+
+# Automatically startup.
+nitrogen --restore &
+
+#$HOME/.config/polybar/run-polybar.sh &
+
+#xfce4-power-manager &
+
+# Run the file if it exists.
+if [ -f ~/mount_sshfs ]; then
+    . ~/mount_sshfs
+fi
+
+# lock computer automatically after X time of minutes.
+xautolock -time 120 -locker "xsecurelock" -detectsleep -secure &
