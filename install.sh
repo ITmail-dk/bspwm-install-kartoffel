@@ -110,9 +110,6 @@ mkdir ~/.config
 #mkdir ~/.local/bin
 mkdir ~/wallpapers
 
-# Set User folders via xdg-user-dirs-update.
-xdg-user-dirs-update
-
 # Not for production version
 #read -p "Troubleshooting - Press a key to continue the installation."
 clear
@@ -291,11 +288,12 @@ cd ~
 #read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
-# Make Xorg config file
-sudo Xorg -configure
+# Set User folders via xdg-user-dirs-update.
+xdg-user-dirs-update
 
+# Edit Grub * update
 sudo sed -i 's+GRUB_TIMEOUT=5+GRUB_TIMEOUT=1+g' /etc/default/grub
-
+sleep 1
 sudo update-grub
 
 # Not for production version

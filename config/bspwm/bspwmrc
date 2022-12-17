@@ -32,7 +32,7 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 xsetroot -cursor_name left_ptr &
 
 #pkill picom &
-#sleep 1 &
+#sleep 1
 #picom -b --vsync --experimental-backends &
 
 # BSPwm - Setting.
@@ -62,7 +62,7 @@ bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
 bspc config click_to_focus false
 
-bspc config pointer_modifier mod1
+bspc config pointer_modifier    mod1
 bspc config pointer_action1     resize_side
 bspc config pointer_action3     move
 #bspc config pointer_action2     resize_corner
@@ -97,6 +97,7 @@ bspc rule -a mpv state=fullscreen border=off
 
 # Automatically startup.
 nitrogen --restore &
+#xrdb .Xresources
 
 #$HOME/.config/polybar/run-polybar.sh &
 
