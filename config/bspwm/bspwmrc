@@ -97,7 +97,7 @@ bspc rule -a mpv state=fullscreen border=off
 
 # Automatically startup.
 nitrogen --restore &
-#xrdb .Xresources
+xrdb $HOME/.Xresources
 
 #$HOME/.config/polybar/run-polybar.sh &
 
