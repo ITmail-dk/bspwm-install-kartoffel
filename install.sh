@@ -103,11 +103,11 @@ echo "     Creates User folders."
 echo " "
 echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 mkdir ~/.config
-#mkdir ~/.themes
-#mkdir ~/.fonts
-#mkdir ~/.icons
-#mkdir ~/.local
-#mkdir ~/.local/bin
+mkdir ~/.themes
+mkdir ~/.fonts
+mkdir ~/.icons
+mkdir ~/.local
+mkdir ~/.local/bin
 mkdir ~/wallpapers
 
 # Not for production version
@@ -122,9 +122,11 @@ echo " "
 echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 
 cp -r ~/bspwm-install-kartoffel/config/* ~/.config/
-#cp -r ~/bspwm-install-kartoffel/fonts/* ~/.fonts/
-#cp -r ~/bspwm-install-kartoffel/themes/* ~/.themes/
+cp -r ~/bspwm-install-kartoffel/fonts/* ~/.fonts/
+cp -r ~/bspwm-install-kartoffel/themes/* ~/.themes/
 cp -r ~/bspwm-install-kartoffel/wallpapers/* ~/wallpapers/
+
+cp ~/bspwm-install-kartoffel/local-files/.Xresources ~/
 
 # Not for production version
 #read -p "Troubleshooting - Press a key to continue the installation."
@@ -187,17 +189,17 @@ clear
 #tar -xf themes/cursors/Nordzy-cursors.tar.gz -C ~/.icons/
 
 #Git Clone files.
-#echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
-#echo " "
-#echo "     Git Clone - Downloads"
-#echo " "
-#echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
+echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
+echo " "
+echo "     Git Clone - Downloads"
+echo " "
+echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
 
 #git clone https://github.com/LINK Nordic-Theme Specific-folder
 
-#git clone https://github.com/EliverLara/Nordic ~/bspwm-install-ma-dte/themes/themes-de/Nordic-theme
-#git clone https://github.com/alvatip/Nordzy-cursors ~/bspwm-install-ma-dte/themes/cursors/Nordzy-cursors-theme
-#git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme ~/bspwm-install-ma-dte/themes/icons/Papirus-icon-theme
+git clone https://github.com/EliverLara/Nordic ~/bspwm-install-kartoffel/themes/Nordic-theme
+git clone https://github.com/alvatip/Nordzy-cursors ~/bspwm-install-kartoffel/themes/cursors/Nordzy-cursors-theme
+git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme
 
 # Not for production version
 #read -p "Troubleshooting - Press a key to continue the installation."
@@ -210,21 +212,21 @@ clear
 #echo " "
 #echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 
-#mkdir ~/.icons/Nordzy-cursors
-#cp -r ~/bspwm-install-ma-dte/themes/cursors/Nordzy-cursors-theme/Nordzy-cursors/* ~/.icons/Nordzy-cursors
+mkdir ~/.icons/Nordzy-cursors
+cp -r ~/bspwm-install-kartoffel/themes/cursors/Nordzy-cursors-theme/Nordzy-cursors/* ~/.icons/Nordzy-cursors
 
-#mkdir ~/.icons/Papirus
-#mkdir ~/.icons/Papirus-Dark
-#mkdir ~/.icons/Papirus-Light
-#cp -r ~/bspwm-install-ma-dte/themes/icons/Papirus-icon-theme/Papirus/* ~/.icons/Papirus
-#cp -r ~/bspwm-install-ma-dte/themes/icons/Papirus-icon-theme/Papirus-Dark/* ~/.icons/Papirus-Dark
-#cp -r ~/bspwm-install-ma-dte/themes/icons/Papirus-icon-theme/Papirus-Light/* ~/.icons/Papirus-Light
+mkdir ~/.icons/Papirus
+mkdir ~/.icons/Papirus-Dark
+mkdir ~/.icons/Papirus-Light
+cp -r ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme/Papirus/* ~/.icons/Papirus
+cp -r ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme/Papirus-Dark/* ~/.icons/Papirus-Dark
+cp -r ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme/Papirus-Light/* ~/.icons/Papirus-Light
 
 #mkdir ~/.config/gtk-3.0
-#cp ~/bspwm-install-ma-dte/themes/gtk-3.0/settings.ini ~/.config/gtk-3.0
-#cp ~/bspwm-install-ma-dte/themes/.gtkrc-2.0 ~/
+#cp ~/bspwm-install-kartoffel/themes/gtk-3.0/settings.ini ~/.config/gtk-3.0
+#cp ~/bspwm-install-kartoffel/themes/.gtkrc-2.0 ~/
 
-#cp -r ~/bspwm-install-ma-dte/themes/themes-de/* ~/.themes/
+cp -r ~/bspwm-install-kartoffel/themes/* ~/.themes/
 
 # Not for production version
 #read -p "Troubleshooting - Press a key to continue the installation."
@@ -259,7 +261,7 @@ echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
 sudo apt update
 
 # Core packages to be installed ############################################################################################################################################
-sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber arandr autorandr xautolock xsecurelock kitty psmisc rofi thunar nitrogen dunst rsync cups xsensors smbclient xbacklight htop mc xarchiver mpv curl tmux sxiv scrot flameshot numlockx neovim notify-osd gparted cpufrequtils nfs-common xinput sshfs qimgv speedcrunch notepadqq
+sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber alsa-firmware-loaders arandr autorandr xautolock xsecurelock kitty psmisc rofi thunar nitrogen dunst rsync cups xsensors smbclient xbacklight htop mc xarchiver mpv curl tmux sxiv scrot flameshot numlockx neovim notify-osd gparted cpufrequtils nfs-common xinput sshfs qimgv speedcrunch notepadqq
 # xorg picom polybar network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit lxappearance pulseaudio pulsemixer firefox-esr neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
 
 # APT OFF
