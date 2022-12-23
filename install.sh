@@ -1,41 +1,41 @@
 #!/bin/bash
 # MENU COLORS ############################################################################################################################################
-export NEWT_COLORS='
-root=white,gray
-window=white,lightgray
-border=black,lightgray
-shadow=white,black
-button=white,blue
-actbutton=black,red
-compactbutton=black,
-title=black,
-roottext=black,magenta
-textbox=black,lightgray
-acttextbox=gray,white
-entry=lightgray,gray
-disentry=gray,lightgray
-checkbox=black,lightgray
-actcheckbox=white,blue
-emptyscale=,black
-fullscale=,red
-listbox=black,lightgray
-actlistbox=lightgray,gray
-actsellistbox=white,blue
-'
+# export NEWT_COLORS='
+# root=white,gray
+# window=white,lightgray
+# border=black,lightgray
+# shadow=white,black
+# button=white,blue
+# actbutton=black,red
+# compactbutton=black,
+# title=black,
+# roottext=black,magenta
+# textbox=black,lightgray
+# acttextbox=gray,white
+# entry=lightgray,gray
+# disentry=gray,lightgray
+# checkbox=black,lightgray
+# actcheckbox=white,blue
+# emptyscale=,black
+# fullscale=,red
+# listbox=black,lightgray
+# actlistbox=lightgray,gray
+# actsellistbox=white,blue
+# '
 
 # Colors black red green yellow blue magenta cyan white + lightCOLOR
 
 
 # START MENU ############################################################################################################################################
 
-CHOICESTART=$(
-whiptail --title "The installation of Martin BSPwm DTE on Debian" --menu "Choose you system from the following" 16 100 9 \
-	"1)" "AMD System"   \
-	"2)" "AMD System + NVIDIA GPU"  \
-	"3)" "Intel System" \
-	"4)" "Intel System + NVIDIA GPU" \
-	"5)" "Virtual Machine System - NO microcode or GPU Drivers" \
-	"6)" "Exit, Do nothing" 3>&2 2>&1 1>&3)
+# CHOICESTART=$(
+# whiptail --title "The installation of Martin BSPwm DTE on Debian" --menu "Choose you system from the following" 16 100 9 \
+# 	"1)" "AMD System"   \
+# 	"2)" "AMD System + NVIDIA GPU"  \
+# 	"3)" "Intel System" \
+# 	"4)" "Intel System + NVIDIA GPU" \
+# 	"5)" "Virtual Machine System - NO microcode or GPU Drivers" \
+# 	"6)" "Exit, Do nothing" 3>&2 2>&1 1>&3)
 
 # START RUN ############################################################################################################################################
 
@@ -57,45 +57,45 @@ sudo sh -c "echo 'deb-src http://deb.debian.org/debian/ testing main contrib non
 
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
+clear
 
 # APT Update + install git
 sudo apt update && sudo apt install -y git
 
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
+clear
 
-case $CHOICESTART in
-	"1)")   
-	        sudo apt install -y amd64-microcode
-		;;
-	"2)")   
-            sudo apt install -y amd64-microcode nvidia-detect nvidia-driver
-		;;
-
-	"3)")   
-	        sudo apt install -y intel-microcode
-        ;;
-
-	"4)")   
-	        sudo apt install -y intel-microcode nvidia-detect nvidia-driver
-        ;;
-
-	"5)")   
-            sudo reboot
-        ;;
-
-	"6)")   
-		    exit
-        ;;
-esac
+#case $CHOICESTART in
+#	"1)")   
+#	        sudo apt install -y amd64-microcode
+#		;;
+#	"2)")   
+#            sudo apt install -y amd64-microcode nvidia-detect nvidia-driver
+#		;;
+#
+#	"3)")   
+#	        sudo apt install -y intel-microcode
+#        ;;
+#
+#	"4)")   
+#	        sudo apt install -y intel-microcode nvidia-detect nvidia-driver
+#        ;;
+#
+#	"5)")   
+#            sudo reboot
+#        ;;
+#
+#	"6)")   
+#		    exit
+#        ;;
+#esac
 
 # Not for production version
-read -p "Troubleshooting - Press a key to continue the installation."
+#read -p "Troubleshooting - Press a key to continue the installation."
+clear
 
 # Do, mkdir, copy, copy, echo files. ############################################################################################################################################
-
-# Not for production version
-read -p "Troubleshooting - Press a key to continue the installation."
 
 echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 echo " "
@@ -260,17 +260,27 @@ echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
 # APT Update Start RUN
 sudo apt update
 
+# Not for production version
+read -p "Troubleshooting - Press a key to continue the installation."
+clear
+
 # Core packages to be installed ############################################################################################################################################
 sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber alsa-firmware-loaders arandr autorandr picom xautolock xsecurelock kitty psmisc rofi thunar nitrogen dunst rsync cups xsensors smbclient xbacklight htop mc xarchiver mpv curl tmux sxiv scrot flameshot numlockx neovim notify-osd gparted cpufrequtils nfs-common xinput sshfs qimgv speedcrunch notepadqq
 # xorg  polybar network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit lxappearance pulseaudio pulsemixer firefox-esr neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
 
-# APT OFF
-# system-config-printer cifs-utils 
-clear
-
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
 clear
+
+# APT OFF
+# system-config-printer cifs-utils 
+# Not for production version
+# read -p "Troubleshooting - Press a key to continue the installation."
+# clear
+
+# Not for production version
+# read -p "Troubleshooting - Press a key to continue the installation."
+# clear
 
 # Google Chrome - Download + Install  ON / OFF
 #rm google-chrome-stable_current_amd64.deb
@@ -283,8 +293,10 @@ clear
 
 cd ~
 
-# Add Pulseaudio to system startup as user.
-#systemctl --user enable pulseaudio
+# Add Pipewire & Wireplumberto system startup as user.
+systemctl --user --now enable pipewire
+sleep 1
+systemctl --user --now enable wireplumber.service
 
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
@@ -292,6 +304,10 @@ clear
 
 # Set User folders via xdg-user-dirs-update.
 xdg-user-dirs-update
+
+# Not for production version
+read -p "Troubleshooting - Press a key to continue the installation."
+clear
 
 # Edit Grub * update
 sudo sed -i 's+GRUB_TIMEOUT=5+GRUB_TIMEOUT=1+g' /etc/default/grub
