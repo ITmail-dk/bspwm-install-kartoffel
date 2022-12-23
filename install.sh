@@ -56,13 +56,13 @@ sudo sh -c "echo 'deb http://deb.debian.org/debian/ testing main contrib non-fre
 sudo sh -c "echo 'deb-src http://deb.debian.org/debian/ testing main contrib non-free' >> /etc/apt/sources.list"
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 
 # APT Update + install git
 sudo apt update && sudo apt install -y git
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 
 case $CHOICESTART in
 	"1)")   
@@ -90,12 +90,12 @@ case $CHOICESTART in
 esac
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 
 # Do, mkdir, copy, copy, echo files. ############################################################################################################################################
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 
 echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 echo " "
@@ -111,7 +111,7 @@ mkdir ~/.local/bin
 mkdir ~/wallpapers
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 #Copy files to...
@@ -129,7 +129,7 @@ cp -r ~/bspwm-install-kartoffel/wallpapers/* ~/wallpapers/
 cp ~/bspwm-install-kartoffel/local-files/.Xresources ~/
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Echo config to files. YES / NO
@@ -141,7 +141,7 @@ echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
 
 echo "     Add Alias to bashrc under bash_aliases config."
 
-echo 'alias ls="ls --color=auto --group-directories-first -v -la"' >> ~/.bashrc
+echo 'alias ls="ls --color=auto --group-directories-first -v -lah"' >> ~/.bashrc
 echo 'alias vi="nvim"' >> ~/.bashrc
 echo 'alias upup="sudo apt update && sudo apt upgrade -y && sudo apt clean && sudo apt autoremove -y"' >> ~/.bashrc
 
@@ -155,7 +155,7 @@ echo "mode=5" >> ~/.config/nitrogen/bg-saved.cfg
 echo "bgcolor=#191a1b" >> ~/.config/nitrogen/bg-saved.cfg
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 #chmod +x files.
@@ -174,7 +174,7 @@ chmod +x ~/.config/rofi/rofi-wifi-menu.sh
 chmod +x ~/.config/rofi/rofi-beats.sh
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 #Unzip files to...
@@ -202,7 +202,7 @@ git clone https://github.com/alvatip/Nordzy-cursors ~/bspwm-install-kartoffel/th
 git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 #Copy Theme files...
@@ -229,7 +229,7 @@ cp -r ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme/Papirus-Light/* 
 cp -r ~/bspwm-install-kartoffel/themes/* ~/.themes/
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 #echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
@@ -239,11 +239,11 @@ clear
 #echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Add Software & Packages.
@@ -261,15 +261,15 @@ echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
 sudo apt update
 
 # Core packages to be installed ############################################################################################################################################
-sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber alsa-firmware-loaders arandr autorandr xautolock xsecurelock kitty psmisc rofi thunar nitrogen dunst rsync cups xsensors smbclient xbacklight htop mc xarchiver mpv curl tmux sxiv scrot flameshot numlockx neovim notify-osd gparted cpufrequtils nfs-common xinput sshfs qimgv speedcrunch notepadqq
-# xorg picom polybar network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit lxappearance pulseaudio pulsemixer firefox-esr neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
+sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber alsa-firmware-loaders arandr autorandr picom xautolock xsecurelock kitty psmisc rofi thunar nitrogen dunst rsync cups xsensors smbclient xbacklight htop mc xarchiver mpv curl tmux sxiv scrot flameshot numlockx neovim notify-osd gparted cpufrequtils nfs-common xinput sshfs qimgv speedcrunch notepadqq
+# xorg  polybar network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit lxappearance pulseaudio pulsemixer firefox-esr neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
 
 # APT OFF
 # system-config-printer cifs-utils 
 clear
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Google Chrome - Download + Install  ON / OFF
@@ -278,7 +278,7 @@ cd /tmp/ && wget https://dl.google.com/linux/direct/google-chrome-stable_current
 sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 cd ~
@@ -287,7 +287,7 @@ cd ~
 #systemctl --user enable pulseaudio
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Set User folders via xdg-user-dirs-update.
@@ -299,7 +299,7 @@ sleep 1
 sudo update-grub
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 echo " Reboot in 7..."

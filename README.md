@@ -1,4 +1,4 @@
-# BSPwm Install - Kartoffel "Potato Edition"
+# FOR TESTING ONLY - BSPwm Install - Kartoffel "Potato Edition"
 An easy and quick way to get up and running in the BSPwm desktop environment with keybindings and some standard software such as Google Chrome, Kitty Terminal, Thunar, Rofi etc... Installation time depends on your internet speed, but in about 15 minutes Are you up and running with a full Debian with BSPwm.
 
 ![BSPwm Install - Kartoffel](https://github.com/ITmail-dk/bspwm-install-kartoffel/raw/main/screenshots/Desktop_2022-01-17_151851.jpg "BSPwm Install - Martin Desktop Environment")

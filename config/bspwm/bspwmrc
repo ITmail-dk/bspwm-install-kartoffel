@@ -3,9 +3,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Run the file if it exists.
-if [ -f ~/mount_sshfs ]; then
-    . ~/mount_sshfs
-fi
+[ -f ~/mount_sshfs ] && . ~/mount_sshfs
 
 
 if [ -f ~/.Xresources ]; then
@@ -43,7 +41,7 @@ xsetroot -cursor_name left_ptr &
 
 #pkill picom &
 #sleep 1
-#picom -b --vsync --experimental-backends &
+#picom --experimental-backends &
 
 # BSPwm - Setting.
 bspc config border_width 1

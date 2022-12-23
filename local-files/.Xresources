@@ -4,7 +4,7 @@ Xcursor.size: 22
 
 ! --- https://terminal.sexy/ ---
 ! --- special colors ---
-*transparent: #00000000
+*.transparent: #00000000
 *.foreground:   #ffffff
 *.background:   #1b1b1b
 *.cursorColor:  #ffffff
