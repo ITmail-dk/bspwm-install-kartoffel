@@ -265,9 +265,15 @@ read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Core packages to be installed ############################################################################################################################################
-sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber alsa-firmware-loaders arandr autorandr picom xautolock xsecurelock kitty psmisc rofi thunar nitrogen dunst rsync cups xsensors smbclient xbacklight htop mc xarchiver mpv curl tmux sxiv scrot flameshot numlockx neovim notify-osd gparted cpufrequtils nfs-common xinput sshfs qimgv speedcrunch
+sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber alsa-firmware-loaders arandr autorandr picom kitty psmisc rofi thunar nitrogen dunst cups xsensors xbacklight htop mc xarchiver curl neovim xinput sshfs 
 # xorg  polybar network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit lxappearance pulseaudio pulsemixer firefox-esr neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
 
+# Not for production version
+read -p "Troubleshooting - Press a key to continue the installation."
+clear
+
+# APT packages to be installed, which are allowed to fail the installation as they are not core packages
+sudo apt install -y mpv tmux sxiv scrot flameshot numlockx gparted qimgv speedcrunch notify-osd cpufrequtils rsync smbclient nfs-common xautolock xsecurelock
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
 clear
