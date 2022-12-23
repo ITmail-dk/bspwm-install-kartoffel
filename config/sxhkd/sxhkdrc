@@ -66,22 +66,34 @@ super + alt + a
     kitty -e pulsemixer
 
 super + alt + m
-    pulsemixer --toggle-mute
+    amixer set 'Master' 0%
 
 super + alt + Up
-    pulsemixer --change-volume +1
+    amixer set 'Master' 1%+
 
 super + alt + Down
-    pulsemixer --change-volume -1
-
-XF86AudioRaiseVolume
-    pulsemixer --change-volume +1
-
-XF86AudioLowerVolume
-    pulsemixer --change-volume -1
+    amixer set 'Master' 1%-
 
 XF86AudioMute
-    pulsemixer --toggle-mute
+    amixer set 'Master' 0%
+
+XF86AudioRaiseVolume
+    amixer set 'Master' 1%+
+
+XF86AudioLowerVolume
+    amixer set 'Master' 1%-
+
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioStop
+	playerctl stop
 
 # Edit Config files in Code
 super + ctrl + alt + c

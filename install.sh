@@ -1,41 +1,4 @@
 #!/bin/bash
-# MENU COLORS ############################################################################################################################################
-# export NEWT_COLORS='
-# root=white,gray
-# window=white,lightgray
-# border=black,lightgray
-# shadow=white,black
-# button=white,blue
-# actbutton=black,red
-# compactbutton=black,
-# title=black,
-# roottext=black,magenta
-# textbox=black,lightgray
-# acttextbox=gray,white
-# entry=lightgray,gray
-# disentry=gray,lightgray
-# checkbox=black,lightgray
-# actcheckbox=white,blue
-# emptyscale=,black
-# fullscale=,red
-# listbox=black,lightgray
-# actlistbox=lightgray,gray
-# actsellistbox=white,blue
-# '
-
-# Colors black red green yellow blue magenta cyan white + lightCOLOR
-
-
-# START MENU ############################################################################################################################################
-
-# CHOICESTART=$(
-# whiptail --title "The installation of Martin BSPwm DTE on Debian" --menu "Choose you system from the following" 16 100 9 \
-# 	"1)" "AMD System"   \
-# 	"2)" "AMD System + NVIDIA GPU"  \
-# 	"3)" "Intel System" \
-# 	"4)" "Intel System + NVIDIA GPU" \
-# 	"5)" "Virtual Machine System - NO microcode or GPU Drivers" \
-# 	"6)" "Exit, Do nothing" 3>&2 2>&1 1>&3)
 
 # START RUN ############################################################################################################################################
 
@@ -66,36 +29,39 @@ sudo apt update && sudo apt install -y git
 read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
-#case $CHOICESTART in
-#	"1)")   
-#	        sudo apt install -y amd64-microcode
-#		;;
-#	"2)")   
-#            sudo apt install -y amd64-microcode nvidia-detect nvidia-driver
-#		;;
-#
-#	"3)")   
-#	        sudo apt install -y intel-microcode
-#        ;;
-#
-#	"4)")   
-#	        sudo apt install -y intel-microcode nvidia-detect nvidia-driver
-#        ;;
-#
-#	"5)")   
-#            sudo reboot
-#        ;;
-#
-#	"6)")   
-#		    exit
-#        ;;
-#esac
+# Add Software & Packages.
+# Add ROOT Level - Software & Packages.
+echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
+echo " "
+echo "     APT Install Software & Packages"
+echo " "
+echo "     Enter your user password, to continue if necessary"
+echo " "
+echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
+
+# APT Update Start RUN
+sudo apt update
 
 # Not for production version
-#read -p "Troubleshooting - Press a key to continue the installation."
+read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
-# Do, mkdir, copy, copy, echo files. ############################################################################################################################################
+# Core packages to be installed ############################################################################################################################################
+sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber pipewire-alsa pipewire-pulse pipewire-jack qjackctl alsa-firmware-loaders arandr autorandr picom kitty psmisc rofi thunar nitrogen dunst cups xsensors xbacklight htop mc xarchiver curl neovim xinput sshfs polybar
+
+# Not for production version
+read -p "Troubleshooting - Press a key to continue the installation."
+clear
+
+# APT packages to be installed, which are allowed to fail the installation as they are not core packages
+sudo apt install -y mpv tmux sxiv scrot flameshot numlockx gparted qimgv speedcrunch notify-osd cpufrequtils rsync smbclient nfs-common xautolock xsecurelock lxappearance firefox-esr
+# network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
+
+# Not for production version
+read -p "Troubleshooting - Press a key to continue the installation."
+clear
+
+# Do, mkdir, copy, copy, echo files. ###################################################################################################################
 
 echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 echo " "
@@ -103,6 +69,8 @@ echo "     Creates User folders."
 echo " "
 echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 mkdir ~/.config
+mkdir ~/.config/polybar
+mkdir ~/.config/picom
 mkdir ~/.themes
 mkdir ~/.fonts
 mkdir ~/.icons
@@ -127,6 +95,10 @@ cp -r ~/bspwm-install-kartoffel/themes/* ~/.themes/
 cp -r ~/bspwm-install-kartoffel/wallpapers/* ~/wallpapers/
 
 cp ~/bspwm-install-kartoffel/local-files/.Xresources ~/
+
+cp /etc/polybar/config.ini ~/.config/polybar
+cp /usr/share/doc/picom/examples/picom.sample.conf ~/.config/picom/picom.conf
+
 
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
@@ -168,7 +140,6 @@ echo "-'-'-'-'-'-'-'-'-'-'-'-'-"
 chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/sxhkd/sxhkdrc
 
-#chmod +x ~/.config/polybar/run-polybar.sh
 chmod +x ~/.config/rofi/powermenu.sh
 chmod +x ~/.config/rofi/rofi-wifi-menu.sh
 chmod +x ~/.config/rofi/rofi-beats.sh
@@ -222,9 +193,9 @@ cp -r ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme/Papirus/* ~/.ico
 cp -r ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme/Papirus-Dark/* ~/.icons/Papirus-Dark
 cp -r ~/bspwm-install-kartoffel/themes/icons/Papirus-icon-theme/Papirus-Light/* ~/.icons/Papirus-Light
 
-#mkdir ~/.config/gtk-3.0
-#cp ~/bspwm-install-kartoffel/themes/gtk-3.0/settings.ini ~/.config/gtk-3.0
-#cp ~/bspwm-install-kartoffel/themes/.gtkrc-2.0 ~/
+mkdir ~/.config/gtk-3.0
+cp ~/bspwm-install-kartoffel/themes/gtk-3.0/settings.ini ~/.config/gtk-3.0
+cp ~/bspwm-install-kartoffel/themes/.gtkrc-2.0 ~/
 
 cp -r ~/bspwm-install-kartoffel/themes/* ~/.themes/
 
@@ -245,48 +216,6 @@ clear
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
 clear
-
-# Add Software & Packages.
-# Add ROOT Level - Software & Packages.
-echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
-echo " "
-echo "     APT Install Software & Packages"
-echo " "
-echo "     Enter your user password, to continue if necessary"
-echo " "
-echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
-
-
-# APT Update Start RUN
-sudo apt update
-
-# Not for production version
-read -p "Troubleshooting - Press a key to continue the installation."
-clear
-
-# Core packages to be installed ############################################################################################################################################
-sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber alsa-firmware-loaders arandr autorandr picom kitty psmisc rofi thunar nitrogen dunst cups xsensors xbacklight htop mc xarchiver curl neovim xinput sshfs 
-# xorg  polybar network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit lxappearance pulseaudio pulsemixer firefox-esr neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
-
-# Not for production version
-read -p "Troubleshooting - Press a key to continue the installation."
-clear
-
-# APT packages to be installed, which are allowed to fail the installation as they are not core packages
-sudo apt install -y mpv tmux sxiv scrot flameshot numlockx gparted qimgv speedcrunch notify-osd cpufrequtils rsync smbclient nfs-common xautolock xsecurelock
-# Not for production version
-read -p "Troubleshooting - Press a key to continue the installation."
-clear
-
-# APT OFF
-# system-config-printer cifs-utils 
-# Not for production version
-# read -p "Troubleshooting - Press a key to continue the installation."
-# clear
-
-# Not for production version
-# read -p "Troubleshooting - Press a key to continue the installation."
-# clear
 
 # Google Chrome - Download + Install  ON / OFF
 #rm google-chrome-stable_current_amd64.deb
@@ -316,6 +245,13 @@ read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Edit Grub * update
+
+echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
+echo " "
+echo "     Enter your user password, to continue if necessary"
+echo " "
+echo "-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-"
+
 sudo sed -i 's+GRUB_TIMEOUT=5+GRUB_TIMEOUT=1+g' /etc/default/grub
 sleep 1
 sudo update-grub
@@ -324,9 +260,6 @@ sudo update-grub
 read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
-echo " Reboot in 7..."
-sleep 1
-echo " Reboot in 6..."
 sleep 1
 echo " Reboot in 5..."
 sleep 1

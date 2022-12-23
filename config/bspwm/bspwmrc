@@ -5,10 +5,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # Run the file if it exists.
 [ -f ~/mount_sshfs ] && . ~/mount_sshfs
 
+[ -f ~/.Xresources ] && . ~/.Xresources
 
-if [ -f ~/.Xresources ]; then
-    xrdb ~/.Xresources
-fi
 
 #bspc monitor (-d or NAME) also the number that should be on that screen.
 #example of reverse order on screens.
@@ -39,9 +37,9 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 # Startup
 xsetroot -cursor_name left_ptr &
 
-#pkill picom &
-#sleep 1
-#picom --experimental-backends &
+killall -q picom &
+sleep 1
+picom -b --experimental-backends &
 
 # BSPwm - Setting.
 bspc config border_width 1
@@ -54,7 +52,7 @@ bspc config window_gap 7
 
 bspc config split_ratio     0.50
 # top_padding so there is room for Polybar.
-bspc config top_padding     28
+bspc config top_padding     32
 bspc config bottom_padding  0
 bspc config left_padding    0
 bspc config right_padding   0
@@ -106,7 +104,9 @@ bspc rule -a mpv state=fullscreen border=off
 # Automatically startup.
 nitrogen --restore &
 
-#$HOME/.config/polybar/run-polybar.sh &
+killall -q polybar &
+sleep 1
+polybar -r &
 
 #xfce4-power-manager &
 
