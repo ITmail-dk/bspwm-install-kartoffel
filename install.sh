@@ -47,7 +47,7 @@ read -p "Troubleshooting - Press a key to continue the installation."
 clear
 
 # Core packages to be installed ############################################################################################################################################
-sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber pipewire-alsa pipewire-pulse pipewire-jack qjackctl alsa-firmware-loaders arandr autorandr picom kitty psmisc rofi thunar nitrogen dunst cups xsensors xbacklight htop mc xarchiver curl neovim xinput sshfs polybar
+sudo apt install -y xorg bspwm sxhkd sddm pipewire wireplumber pipewire-alsa pipewire-pulse pipewire-jack qjackctl alsa-firmware-loaders alsa-utils arandr autorandr picom kitty psmisc rofi thunar nitrogen dunst cups xsensors xbacklight htop mc xarchiver curl neovim xinput sshfs polybar
 
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."

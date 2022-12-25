@@ -3,9 +3,9 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Run the file if it exists.
-[ -f ~/mount_sshfs ] && . ~/mount_sshfs
+#[ -f ~/mount_sshfs.sh ] && . ~/mount_sshfs.sh
 
-[ -f ~/.Xresources ] && . ~/.Xresources
+[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
 
 #bspc monitor (-d or NAME) also the number that should be on that screen.
