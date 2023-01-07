@@ -55,7 +55,7 @@ clear
 
 # APT packages to be installed, which are allowed to fail the installation as they are not core packages
 sudo apt install -y policykit-1-gnome mpv tmux sxiv scrot flameshot numlockx gparted qimgv speedcrunch notify-osd cpufrequtils rsync smbclient nfs-common xautolock xsecurelock lxappearance firefox-esr
-# network-manager nemo pcmanfm module-assistant font-manager gvfs-backends lxpolkit neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
+# network-manager nemo pcmanfm module-assistant font-manager gvfs-backends neofetch flatpak timeshift rename xfce4-power-manager xfce4-settings bpytop firmware-linux-nonfree virt-viewer gvncviewer wireguard freerdp2-x11 freerdp2-shadow-x11
 
 # Not for production version
 read -p "Troubleshooting - Press a key to continue the installation."
